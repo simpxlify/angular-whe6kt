@@ -57,9 +57,13 @@ export class AppComponent {
     return this.profileForm.get("updateAddress") as FormArray;
   }
   addAddress() {
-    this.updateAddress.push(this.newAddress())
+    this.updateAddress.push(this.newAddress());
   }
   removeAddress(id) {
-    this.updateAddress.removeAt(id)
+    this.updateAddress.removeAt(id);
+  }
+
+  ngOnInit() {
+    this.addAddress();
   }
 }

@@ -1,0 +1,20 @@
+<form [formGroup]='profileForm'>
+  <ng-container formArrayName="updateAddress">
+    <div *ngFor="let add of updateAddress.controls; let addIndex=index">
+      <div [formGroupName]="addIndex">
+        <label>
+          Rua:
+          <input type="text" formControlName="address">
+        </label>
+
+        <div *ngIf="add.get('address').invalid && (add.get('address').dirty || add.get('address').touched)">
+          <div *ngIf="add.get('address').errors?.required">
+            Tem de escrever a rua da sua loja.
+          </div>
+        </div>
+        <button (click)="removeAddress(addIndex)">Remover</button>
+      </div>
+    </div>
+    <button type="button" (click)="addAddress()">Adicionar Morada</button>
+  </ng-container>
+</form>
